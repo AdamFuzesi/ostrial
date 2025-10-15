@@ -5,9 +5,8 @@ import { Suspense } from "react"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Modern Bento Grid",
-  description: "Sleek bento box design with smooth animations",
-  generator: "v0.app",
+  title: "Adam Fuzesi | Software Engineer",
+  description: "Portfolio of Adam Fuzesi - Full-stack developer passionate about creating beautiful, performant web experiences.",
 }
 
 export default function RootLayout({
@@ -26,5 +25,8 @@ export default function RootLayout({
     </html>
   )
 }
+
+
+
 
 

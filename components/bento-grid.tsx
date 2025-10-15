@@ -231,6 +231,7 @@ export function BentoGrid() {
   const [shouldStartFromCenter, setShouldStartFromCenter] = useState(false)
   const [clickedCardClassName, setClickedCardClassName] = useState<string>("")
   const [isReturningToMain, setIsReturningToMain] = useState(false)
+  const [showGif, setShowGif] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const cardRefs = useRef<Record<string, HTMLDivElement | null>>({})
 
@@ -478,10 +479,30 @@ export function BentoGrid() {
               ref={(el) => {
                 cardRefs.current[item.id] = el
               }}
-              className={`group relative overflow-hidden border-2 border-card bg-card cursor-pointer ${cardClassName}`}
-              style={animationStyle}
-              onMouseEnter={() => animationState === "idle" && setHoveredId(item.id)}
-              onMouseLeave={() => setHoveredId(null)}
+              className={`group relative overflow-hidden cursor-pointer transition-all duration-300 ease-out ${cardClassName} ${
+                isHovered && animationState === "idle" ? "scale-[1.08] shadow-2xl shadow-blue-500/30 -translate-y-1" : ""
+              }`}
+              style={{
+                ...animationStyle,
+                background: "rgba(255, 255, 255, 0.03)",
+                backdropFilter: "blur(20px)",
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+                boxShadow: isHovered && animationState === "idle" 
+                  ? "0 20px 60px 0 rgba(59, 130, 246, 0.4)" 
+                  : "0 8px 32px 0 rgba(31, 38, 135, 0.15)",
+              }}
+              onMouseEnter={() => {
+                if (animationState === "idle") {
+                  setHoveredId(item.id)
+                  if (item.id === "projects") {
+                    setShowGif(true)
+                  }
+                }
+              }}
+              onMouseLeave={() => {
+                setHoveredId(null)
+                setShowGif(false)
+              }}
               onClick={(e) => {
                 if (animationState !== "idle") return
                 if (!activeSection) {
@@ -491,22 +512,39 @@ export function BentoGrid() {
                 }
               }}
             >
-              <div className="relative flex h-full flex-col justify-between p-6 md:p-8">
+              {/* GIF Background for Projects Card */}
+              {item.id === "projects" && showGif && isHovered && (
+                <div className="absolute inset-0 z-0 animate-in fade-in duration-300">
+                  <img
+                    src="/gifs/project.gif"
+                    alt="Project preview"
+                    className="w-full h-full object-cover rounded-lg opacity-40"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
+                </div>
+              )}
+
+              <div className="relative z-10 flex h-full flex-col justify-between p-6 md:p-8">
                 <div className="flex items-start justify-between">
                   <div
-                    className={`rounded-xl bg-card-foreground/10 p-3 transition-all duration-300 ${
-                      isHovered ? "scale-110 bg-card-foreground/20" : ""
+                    className={`rounded-xl p-3 transition-all duration-300 ${
+                      isHovered ? "scale-110" : ""
                     }`}
+                    style={{
+                      background: "rgba(255, 255, 255, 0.05)",
+                      backdropFilter: "blur(10px)",
+                      border: "1px solid rgba(255, 255, 255, 0.1)",
+                    }}
                   >
-                    <Icon className="h-6 w-6 text-card-foreground" />
+                    <Icon className="h-6 w-6 text-white" />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-3xl font-normal tracking-tight text-card-foreground md:text-5xl">
+                  <h3 className="text-3xl font-normal tracking-tight text-white md:text-5xl">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-card-foreground/70 md:text-base italic">
+                  <p className="text-sm text-white/60 md:text-base italic">
                     {item.description}
                   </p>
                 </div>
