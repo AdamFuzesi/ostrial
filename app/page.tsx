@@ -60,7 +60,7 @@ export default function Home() {
         </motion.div>
       </div>
 
-      {/* Second Section - BentoGrid with Liquid Glass Background */}
+      {/* Second Section - BentoGrid with Soft Background */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -68,73 +68,9 @@ export default function Home() {
         viewport={{ once: true }}
         className="relative min-h-screen z-20"
         style={{
-          background: "linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%)",
+          background: "linear-gradient(135deg, #f8f7ff 0%, #faf9ff 50%, #f5f3ff 100%)",
         }}
       >
-        {/* Liquid Glass Effect Background */}
-        <div className="absolute inset-0 overflow-hidden">
-          {/* Large glass orbs */}
-          <motion.div
-            className="absolute top-1/4 left-1/3 w-[600px] h-[600px] rounded-full opacity-30"
-            style={{
-              background: "radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%)",
-              filter: "blur(60px)",
-            }}
-            animate={{
-              scale: [1, 1.2, 1],
-              x: [0, 60, 0],
-              y: [0, 40, 0],
-            }}
-            transition={{
-              duration: 12,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-          <motion.div
-            className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] rounded-full opacity-25"
-            style={{
-              background: "radial-gradient(circle, rgba(96, 165, 250, 0.3) 0%, transparent 70%)",
-              filter: "blur(50px)",
-            }}
-            animate={{
-              scale: [1.2, 1, 1.2],
-              x: [0, -50, 0],
-              y: [0, -40, 0],
-            }}
-            transition={{
-              duration: 10,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-          <motion.div
-            className="absolute top-1/2 left-1/2 w-[400px] h-[400px] rounded-full opacity-20"
-            style={{
-              background: "radial-gradient(circle, rgba(37, 99, 235, 0.3) 0%, transparent 70%)",
-              filter: "blur(70px)",
-            }}
-            animate={{
-              scale: [1, 1.3, 1],
-              x: [-30, 30, -30],
-              y: [20, -20, 20],
-            }}
-            transition={{
-              duration: 15,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        </div>
-        
-        {/* Glass overlay with noise texture */}
-        <div 
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-          }}
-        />
-
         {/* Content */}
         <div className="relative z-10 pt-20 pb-20 px-8">
           <motion.div
@@ -150,3 +86,4 @@ export default function Home() {
     </div>
   )
 }
+

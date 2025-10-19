@@ -6,15 +6,15 @@ export default function HeroContent() {
       <div className="text-left">
         {/* Main Heading */}
         <h2 className="text-5xl md:text-6xl md:leading-[1.15] tracking-tight font-light text-white mb-6">
-          Building <span className="font-medium italic instrument">elegant</span> solutions
+          Software <span className="font-medium italic instrument">Engineer</span> 
           <br />
-          <span className="font-light tracking-tight text-white">through innovative code</span>
+          <span className="font-light tracking-tight text-white">Design, Build, Ship, Repeat</span>
         </h2>
 
         {/* Description */}
         <p className="text-sm font-light text-white/70 mb-8 leading-relaxed max-w-xl">
-          Full-stack developer passionate about creating beautiful, performant web experiences. 
-          Specializing in modern frameworks, UI/UX design, and turning complex problems into simple solutions.
+          Google Cloud Certified, AWS, Azure Certified, 2x previous Platform Engineer Intern.``
+
         </p>
 
         {/* Buttons */}
