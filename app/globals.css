@@ -134,6 +134,18 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Performance optimizations */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Hardware acceleration for smooth animations */
+  .rounded-\[2rem\] {
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
 }
 
 @keyframes emergeCard {
@@ -147,18 +159,40 @@
   }
 }
 
-/* Add scrolling animation keyframes */
+/* Add scrolling animation keyframes - optimized with GPU acceleration */
 @keyframes scroll-left {
   0% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 .animate-scroll-left {
   animation: scroll-left 20s linear infinite;
+  will-change: transform;
+  contain: layout;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+/* Custom vertical scrolling animation - optimized with GPU acceleration */
+@keyframes scroll-down {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+.animate-scroll-down {
+  animation: scroll-down 20s linear infinite;
+  will-change: transform;
+  contain: layout;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 

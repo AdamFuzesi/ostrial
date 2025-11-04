@@ -18,26 +18,32 @@ export default function Home() {
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95])
 
   useEffect(() => {
-    // Smooth scroll behavior
-    document.documentElement.style.scrollBehavior = "smooth"
-    return () => {
-      document.documentElement.style.scrollBehavior = "auto"
-    }
+    // Remove smooth scroll for better performance
+    document.documentElement.style.scrollBehavior = "auto"
   }, [])
 
   return (
-    <div className="bg-black">
-      {/* Hero Section with Shader Background */}
-      <div className="relative h-screen w-full">
+    <div className="bg-black relative">
+      {/* Global Shader Background - Fixed */}
+      <div className="fixed inset-0 w-full h-full z-0">
+        <ShaderBackground>
+          <div />
+        </ShaderBackground>
+      </div>
+
+      {/* Hero Section */}
+      <div className="relative h-screen w-full z-10">
         <motion.div
           ref={containerRef}
-          style={{ opacity, scale }}
-          className="fixed inset-0 h-screen w-full z-0"
+          style={{ 
+            opacity, 
+            scale,
+            willChange: "opacity, transform",
+          }}
+          className="relative h-screen w-full"
         >
-        <ShaderBackground>
           <Header />
           <HeroContent />
-        </ShaderBackground>
 
           {/* Scroll Indicator */}
           <motion.div
@@ -60,27 +66,39 @@ export default function Home() {
         </motion.div>
       </div>
 
-      {/* Second Section - BentoGrid with Soft Background */}
+      {/* Second Section - BentoGrid with Glass Effect */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        viewport={{ once: true, margin: "-100px" }}
         className="relative min-h-screen z-20"
         style={{
-          background: "linear-gradient(135deg, #f8f7ff 0%, #faf9ff 50%, #f5f3ff 100%)",
+          willChange: "opacity",
         }}
       >
+        {/* Glass Overlay */}
+        <div 
+          className="absolute inset-0 backdrop-blur-xl"
+          style={{
+            background: "rgba(255, 255, 255, 0.15)",
+            backdropFilter: "blur(40px) saturate(150%)",
+            WebkitBackdropFilter: "blur(40px) saturate(150%)",
+          }}
+        />
+        
+        {/* Subtle gradient overlay for depth */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.1) 100%)",
+            pointerEvents: "none",
+          }}
+        />
+
         {/* Content */}
         <div className="relative z-10 pt-20 pb-20 px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <BentoGrid />
-          </motion.div>
+          <BentoGrid />
         </div>
       </motion.div>
     </div>
