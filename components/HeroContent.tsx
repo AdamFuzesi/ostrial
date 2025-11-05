@@ -12,10 +12,6 @@ export default function HeroContent() {
         </h2>
 
         {/* Description */}
-        <p className="text-sm font-light text-white/70 mb-8 leading-relaxed max-w-xl">
-          Google Cloud Certified, AWS, Azure Certified, 2x previous Platform Engineer Intern.``
-
-        </p>
 
         {/* Buttons */}
         <div className="flex items-center gap-4 flex-wrap">

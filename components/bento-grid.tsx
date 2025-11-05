@@ -1,60 +1,143 @@
 "use client"
 
 import { memo } from "react"
+import { motion } from "framer-motion"
 import { Linkedin, Github, Mail } from "lucide-react"
 import { AnimatedCard } from "@/components/animated-card"
 import { VerticalAnimatedCard } from "@/components/vertical-animated-card"
+import { DiagonalAnimatedCard } from "@/components/diagonal-animated-card"
 import { QuoteCard } from "@/components/quote-card"
+
+// Animation variants for staggered entrance
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+}
 
 export const BentoGrid = memo(function BentoGrid() {
   return (
     <div className="p-6 md:p-8">
       <div className="mx-auto max-w-[1800px]">
         {/* FIRST PAGE - Main Feature Cards */}
-        <div className="min-h-screen grid grid-cols-1 lg:grid-cols-[400px_1fr_400px] gap-6 pb-20">
+        <motion.div
+          className="min-h-screen grid grid-cols-1 lg:grid-cols-[400px_1fr_400px] gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
           {/* Left - About (Tall Vertical Card) */}
-          <div className="h-[700px]">
+          <motion.div className="h-[700px]" variants={itemVariants}>
             <VerticalAnimatedCard title="About" description="Learn more about my journey and skills" className="h-full" />
-          </div>
+          </motion.div>
 
           {/* Middle - Skills and Quote */}
-          <div className="flex flex-col gap-6 h-[700px]">
+          <motion.div className="flex flex-col gap-6 h-[700px]" variants={itemVariants}>
             <AnimatedCard title="Skills" description="Full-stack development, UI/UX design, and modern web technologies" className="h-[330px]" />
             <div className="flex-1">
               <QuoteCard />
             </div>
-          </div>
+          </motion.div>
 
           {/* Right - Portrait Image */}
-          <div className="h-[700px]">
+          <motion.div className="h-[700px]" variants={itemVariants}>
             <div
-              className="rounded-[2rem] bg-[#8b5cf6] overflow-hidden h-full"
+              className="rounded-[2rem] bg-white overflow-hidden h-full flex items-center justify-center"
               style={{
                 boxShadow: "0 20px 40px -12px rgba(139, 92, 246, 0.35), 0 10px 20px -10px rgba(139, 92, 246, 0.3)",
               }}
             >
-              {/* Image will be added later */}
+              <img 
+                src="/gifs/ascii-better.png" 
+                alt="ASCII Art Portrait" 
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        {/* SECOND PAGE - Additional Cards */}
-        <div className="min-h-screen pt-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <AnimatedCard title="Projects" description="Explore my latest work and creations" className="h-[280px]" />
+        {/* SECOND PAGE - Additional Cards with Unique Layout */}
+        <motion.div
+          className="min-h-screen"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-150px" }}
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr_400px] gap-6 auto-rows-min">
+            {/* Projects - Large spanning card with inverted colors */}
+            <motion.div className="lg:col-span-2 lg:row-span-1" variants={itemVariants}>
+              <div
+                className="rounded-[2rem] bg-white p-8 md:p-10 relative overflow-hidden cursor-pointer group transition-all duration-300 h-[350px]"
+                style={{
+                  boxShadow: "0 20px 40px -12px rgba(139, 92, 246, 0.35), 0 10px 20px -10px rgba(139, 92, 246, 0.3)",
+                  willChange: "box-shadow",
+                }}
+              >
+                {/* Normal content */}
+                <div className="transition-opacity duration-300 group-hover:opacity-0">
+                  <h2 className="text-5xl md:text-6xl font-light text-[#8b5cf6] mb-3">Projects</h2>
+                  <p className="text-[#8b5cf6]/90 text-lg leading-relaxed">Explore my latest work and creations</p>
+                </div>
 
-            <AnimatedCard
-              title="Hackathons"
-              description="Competition wins and collaborative builds"
-              className="h-[280px]"
-            />
+                {/* Scrolling text on hover */}
+                <div className="absolute inset-0 flex items-end pb-4 transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+                  <div className="flex whitespace-nowrap animate-scroll-left">
+                    {Array.from({ length: 10 }).map((_, i) => (
+                      <span key={i} className="text-8xl md:text-9xl font-light text-[#8b5cf6] px-8 leading-none">
+                        Projects
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
 
-            <AnimatedCard title="Involvement" description="Community contributions and leadership roles" className="h-[280px]" />
+            {/* Education - Tall diagonal animated card on the right */}
+            <motion.div className="lg:row-span-3 h-[700px]" variants={itemVariants}>
+              <DiagonalAnimatedCard title="Education" description="Academic background and certifications" className="h-full" />
+            </motion.div>
 
-            <AnimatedCard title="Education" description="Academic background and certifications" className="h-[280px]" />
+            {/* Hackathons */}
+            <motion.div variants={itemVariants}>
+              <AnimatedCard
+                title="Hackathons"
+                description="Competition wins and collaborative builds"
+                className="h-[280px]"
+              />
+            </motion.div>
 
-            {/* Get In Touch Card with Social Icons */}
-            <div className="lg:col-span-1">
+            {/* Involvement */}
+            <motion.div variants={itemVariants}>
+              <AnimatedCard title="Involvement" description="Community contributions and leadership roles" className="h-[280px]" />
+            </motion.div>
+
+            {/* Get In Touch Card with Social Icons - Spanning 2 columns */}
+            <motion.div className="lg:col-span-2" variants={itemVariants}>
               <div
                 className="rounded-[2rem] bg-[#8b5cf6] p-8 md:p-10 h-[280px] flex flex-col justify-between transition-all duration-300"
                 style={{
@@ -93,9 +176,9 @@ export const BentoGrid = memo(function BentoGrid() {
                   </button>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   )
