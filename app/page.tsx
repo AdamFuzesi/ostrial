@@ -66,7 +66,7 @@ export default function Home() {
         </motion.div>
       </div>
 
-      {/* Second Section - BentoGrid with Glass Effect */}
+      {/* Second Section - BentoGrid with Same Background */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -77,25 +77,6 @@ export default function Home() {
           willChange: "opacity",
         }}
       >
-        {/* Glass Overlay */}
-        <div 
-          className="absolute inset-0 backdrop-blur-xl"
-          style={{
-            background: "rgba(255, 255, 255, 0.15)",
-            backdropFilter: "blur(40px) saturate(150%)",
-            WebkitBackdropFilter: "blur(40px) saturate(150%)",
-          }}
-        />
-        
-        {/* Subtle gradient overlay for depth */}
-        <div 
-          className="absolute inset-0"
-          style={{
-            background: "linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.1) 100%)",
-            pointerEvents: "none",
-          }}
-        />
-
         {/* Content */}
         <div className="relative z-10 pt-20 pb-20 px-8">
           <BentoGrid />

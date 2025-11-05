@@ -2,11 +2,8 @@
 
 export default function Header() {
   return (
-    <header className="relative z-20 flex items-center justify-between p-6">
-      {/* Left side - Navigation  no need for navigation*/}
-
-
-      {/* Right side - Name & Title */}
+    <header className="absolute top-0 right-0 z-20 p-8">
+      {/* Name & Title - Top Right */}
       <div className="text-right">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-white tracking-tight">
           Adam <span className="font-medium italic instrument">Fuzesi</span>
