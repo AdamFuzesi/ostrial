@@ -3,6 +3,7 @@
 import { memo } from "react"
 import { motion } from "framer-motion"
 import { Linkedin, Github, Mail } from "lucide-react"
+import Link from "next/link"
 import { AnimatedCard } from "@/components/animated-card"
 import { VerticalAnimatedCard } from "@/components/vertical-animated-card"
 import { DiagonalAnimatedCard } from "@/components/diagonal-animated-card"
@@ -47,7 +48,9 @@ export const BentoGrid = memo(function BentoGrid() {
         >
           {/* Left - About (Tall Vertical Card) */}
           <motion.div className="h-[700px]" variants={itemVariants}>
-            <VerticalAnimatedCard title="About" description="Learn more about my journey and skills" className="h-full" />
+            <Link href="/about" className="block h-full">
+              <VerticalAnimatedCard title="About" description="Learn more about my journey and skills" className="h-full" />
+            </Link>
           </motion.div>
 
           {/* Middle - Skills and Quote */}

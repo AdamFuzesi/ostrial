@@ -61,19 +61,35 @@ export default function ShaderBackground({ children }: ShaderBackgroundProps) {
         </defs>
       </svg>
 
+
       {/* Background Shaders */}
       <div className="absolute inset-0 w-full h-full bg-black">
         <MeshGradient
           className="absolute inset-0 w-full h-full"
-          colors={["#000000", "#8b5cf6", "#ffffff", "#1e1b4b", "#4c1d95"]}
+          colors={["#735DA5", "#8b5cf6", "#ffffff", "#1e1b4b", "#4c1d95"]}
           speed={0.3}
         />
         <MeshGradient
+          // #D3C5E5 #735DA5
           className="absolute inset-0 w-full h-full opacity-60"
-          colors={["#000000", "#ffffff", "#8b5cf6", "#000000"]}
+          colors={["#735DA5", "#ffffff", "#8b5cf6", "#735DA5"]}
           speed={0.2}
         />
       </div>
+
+      {/* Blur ef      <div className="absolute inset-0 w-full h-full bg-black">
+        <MeshGradient
+          className="absolute inset-0 w-full h-full"
+          colors={["#735DA5", "#D3C5E5", "#ffffff", "#735DA5", "#D3C5E5"]}
+          speed={0.3}
+        />
+        <MeshGradient
+          // #D3C5E5 and #735DA5
+          className="absolute inset-0 w-full h-full opacity-60"
+          colors={["#735DA5", "#735DA5", "#D3C5E5", "#735DA5"]}
+          speed={0.2}
+        />
+      </div> */}
 
       {children}
     </div>

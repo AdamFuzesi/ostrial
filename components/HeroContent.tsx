@@ -17,7 +17,7 @@ export default function HeroContent() {
         <div className="flex items-center gap-4 flex-wrap">
           <a
             href="#work"
-            className="px-8 py-3 rounded-full bg-white text-black font-normal text-sm transition-all duration-200 hover:bg-white/90 cursor-pointer inline-block"
+            className="px-8 py-3 rounded-full bg-white text-black font-normal text- transition-all duration-200 hover:bg-white/90 cursor-pointer inline-block"
           >
             View My Work
           </a>

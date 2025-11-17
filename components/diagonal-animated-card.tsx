@@ -36,7 +36,7 @@ export const DiagonalAnimatedCard = memo(function DiagonalAnimatedCard({
           <div 
             className="flex whitespace-nowrap"
             style={{
-              animation: "diagonal-scroll-left 40s linear infinite",
+              animation: "diagonal-scroll-left 30s linear infinite",
               willChange: "transform",
             }}
           >
@@ -56,7 +56,7 @@ export const DiagonalAnimatedCard = memo(function DiagonalAnimatedCard({
           <div 
             className="flex whitespace-nowrap"
             style={{
-              animation: "diagonal-scroll-right 40s linear infinite",
+              animation: "diagonal-scroll-right 30s linear infinite",
               willChange: "transform",
             }}
           >
@@ -76,7 +76,7 @@ export const DiagonalAnimatedCard = memo(function DiagonalAnimatedCard({
           <div 
             className="flex whitespace-nowrap"
             style={{
-              animation: "diagonal-scroll-left 40s linear infinite",
+              animation: "diagonal-scroll-left 30s linear infinite",
               willChange: "transform",
             }}
           >
