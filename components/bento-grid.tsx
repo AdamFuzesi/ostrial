@@ -94,30 +94,32 @@ export const BentoGrid = memo(function BentoGrid() {
           <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr_400px] gap-6 auto-rows-min">
             {/* Projects - Large spanning card with inverted colors */}
             <motion.div className="lg:col-span-2 lg:row-span-1" variants={itemVariants}>
-              <div
-                className="rounded-[2rem] bg-white p-8 md:p-10 relative overflow-hidden cursor-pointer group transition-all duration-300 h-[350px]"
-                style={{
-                  boxShadow: "0 20px 40px -12px rgba(139, 92, 246, 0.35), 0 10px 20px -10px rgba(139, 92, 246, 0.3)",
-                  willChange: "box-shadow",
-                }}
-              >
-                {/* Normal content */}
-                <div className="transition-opacity duration-300 group-hover:opacity-0">
-                  <h2 className="text-5xl md:text-6xl font-light text-[#8b5cf6] mb-3">Projects</h2>
-                  <p className="text-[#8b5cf6]/90 text-lg leading-relaxed">Explore my latest work and creations</p>
-                </div>
+              <Link href="/projects" className="block h-full">
+                <div
+                  className="rounded-[2rem] bg-white p-8 md:p-10 relative overflow-hidden cursor-pointer group transition-all duration-300 h-[350px]"
+                  style={{
+                    boxShadow: "0 20px 40px -12px rgba(139, 92, 246, 0.35), 0 10px 20px -10px rgba(139, 92, 246, 0.3)",
+                    willChange: "box-shadow",
+                  }}
+                >
+                  {/* Normal content */}
+                  <div className="transition-opacity duration-300 group-hover:opacity-0">
+                    <h2 className="text-5xl md:text-6xl font-light text-[#8b5cf6] mb-3">Projects</h2>
+                    <p className="text-[#8b5cf6]/90 text-lg leading-relaxed">Explore my latest work and creations</p>
+                  </div>
 
-                {/* Scrolling text on hover */}
-                <div className="absolute inset-0 flex items-end pb-4 transition-opacity duration-300 opacity-0 group-hover:opacity-100">
-                  <div className="flex whitespace-nowrap animate-scroll-left">
-                    {Array.from({ length: 10 }).map((_, i) => (
-                      <span key={i} className="text-8xl md:text-9xl font-light text-[#8b5cf6] px-8 leading-none">
-                        Projects
-                      </span>
-                    ))}
+                  {/* Scrolling text on hover */}
+                  <div className="absolute inset-0 flex items-end pb-4 transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+                    <div className="flex whitespace-nowrap animate-scroll-left">
+                      {Array.from({ length: 10 }).map((_, i) => (
+                        <span key={i} className="text-8xl md:text-9xl font-light text-[#8b5cf6] px-8 leading-none">
+                          Projects
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             </motion.div>
 
             {/* Education - Tall diagonal animated card on the right */}

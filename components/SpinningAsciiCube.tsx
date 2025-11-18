@@ -7,7 +7,11 @@ import { motion } from "framer-motion"
   Program component copied from my previous project in C code.
 */
 
-export const SpinningAsciiCube = () => {
+interface SpinningAsciiCubeProps {
+  color?: string
+}
+
+export const SpinningAsciiCube = ({ color = "white" }: SpinningAsciiCubeProps) => {
   const [isHovered, setIsHovered] = useState(false)
   const [cubeFrame, setCubeFrame] = useState("")
   const animationRef = useRef<number>()
@@ -165,7 +169,7 @@ export const SpinningAsciiCube = () => {
       {/* alter font for terminal effect */}
       <div className="relative z-10">
         <pre
-          className={`font-mono leading-tight select-none transition-all duration-300 ${
+          className={`font-mono leading-tight select-none transition-all duration-500 ${
             isHovered ? "scale-110" : "scale-100"
           }`}
           style={{
@@ -173,6 +177,7 @@ export const SpinningAsciiCube = () => {
             fontSize: "16px",
             lineHeight: "18px",
             letterSpacing: "0px",
+            color: color,
             whiteSpace: "pre",
             textAlign: "center",
           }}
