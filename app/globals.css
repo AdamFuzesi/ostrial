@@ -89,6 +89,11 @@
 }
 
 @theme inline {
+  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
+  --color-neutral-50: #fafafa;
+  --color-neutral-400: #a3a3a3;
+  --color-neutral-600: #525252;
+  --color-neutral-800: #262626;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
