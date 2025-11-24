@@ -198,7 +198,7 @@ export default function AboutPage() {
             viewport={{ once: true, margin: "-100px" }}
             className="mb-16"
           >
-            {/* Large Name Heading - Full Width */}
+            {/* Large Name Heading */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -214,7 +214,7 @@ export default function AboutPage() {
             </motion.h1>
 
             <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-start">
-              {/* Left Column - Email */}
+              {/* Left Column */}
               <div>
                 {/* Email with Copy Button */}
                 <motion.div
