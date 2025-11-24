@@ -6,66 +6,66 @@ import Image from "next/image"
 const slides = [
   {
     id: 1,
-    image: "/gifs/3dportfolio.png",
-    alt: "3D Portfolio",
-    title: "3D Portfolio",
-    description: "Interactive 3D portfolio experience",
+    image: "/gifs/firstin.png",
+    alt: "First In",
+    title: "First In",
+    description: "Full scale mobile application for events and line skipping.",
   },
   {
     id: 2,
     image: "/gifs/yorigo.png",
     alt: "Yorigo",
     title: "Yorigo",
-    description: "Modern web application",
+    description: "Social media application for recipes and ingredients ordered straight to your door.",
   },
   {
     id: 3,
     image: "/gifs/vision.png",
     alt: "Vision",
     title: "Vision",
-    description: "AI-powered visual platform",
+    description: "Easy to use unreal engine inspired no code AVS builder.",
   },
   {
     id: 4,
     image: "/gifs/redbullGood.png",
     alt: "Red Bull",
     title: "Red Bull",
-    description: "Brand experience website",
+    description: "UI/UX designer for team Canada Redbull Basement Pitch competition.",
   },
   {
     id: 5,
     image: "/gifs/mosaic.png",
     alt: "Mosaic",
     title: "Mosaic",
-    description: "Creative grid layout system",
+    description: "Reliability of traditional payment systems with the innovation of blockchain technology..",
   },
   {
     id: 6,
     image: "/gifs/kickit.png",
     alt: "Kick It",
     title: "Kick It",
-    description: "Social sports platform",
+    description: "Website development venture for local businesses. Full scale CRM system built.",
   },
   {
     id: 7,
     image: "/gifs/aptos.png",
     alt: "Aptos",
     title: "Aptos",
-    description: "Blockchain solution",
+    description: "AptosPixel is a decentralized pixel art platform built on the Aptos blockchain.",
   },
   {
     id: 8,
-    image: "/gifs/firstin.png",
-    alt: "First In",
-    title: "First In",
-    description: "Priority booking platform",
+    image: "/gifs/3dportfolio.png",
+    alt: "3D Portfolio",
+    title: "3D Portfolio",
+    description: "THREEJS Interactive 3D portfolio experience. Full model built on blender from scratch.",
   },
   {
     id: 9,
     image: "/gifs/challenger.png",
     alt: "Challenger",
     title: "Challenger",
-    description: "Competitive gaming platform",
+    description: "Competitive matchmaking IOS application for racket sports.",
   },
 ]
 
@@ -171,7 +171,7 @@ export default function HorizontalScroller() {
           }}
         >
           {slides.map((slide, index) => (
-            <div key={slide.id} className="relative h-full w-screen flex items-center justify-center">
+            <div key={slide.id} className="relative h-full w-screen flex flex-col items-center justify-center gap-6">
               <div className="relative h-[50vh] w-[60vw] overflow-hidden">
                 <Image
                   src={slide.image || "/placeholder.svg"}
@@ -182,6 +182,17 @@ export default function HorizontalScroller() {
                   draggable={false}
                 />
               </div>
+              
+              {/* Project Title and Description */}
+              <div className="text-center px-8 max-w-[60vw]">
+                <h3 className="text-neutral-800 text-lg md:text-xl font-light tracking-wide mb-1">
+                  {slide.title}
+                </h3>
+                <p className="text-neutral-500 text-xs md:text-sm font-light tracking-wide">
+                  {slide.description}
+                </p>
+              </div>
+              
               {/* Slide number indicator */}
               <div className="absolute left-8 bottom-8 md:left-16 md:bottom-16">
                 <p className="text-neutral-400 text-sm md:text-base font-light tracking-wider">

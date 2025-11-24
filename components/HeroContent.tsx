@@ -5,7 +5,7 @@ export default function HeroContent() {
     <main className="absolute bottom-8 left-8 z-20 max-w-2xl">
       <div className="text-left">
         {/* Main Heading */}
-        <h2 className="text-5xl md:text-7xl md:leading-[1.15] tracking-tight font-light text-white mb-6">
+        <h2 className="text-5xl md:text-8xl md:leading-[1.15] tracking-tight font-light text-white mb-6">
           Software <span className="font-medium italic instrument">Engineer</span> 
           <br />
           <span className="font-light tracking-tight text-white">Design, Build, Ship, Repeat</span>
