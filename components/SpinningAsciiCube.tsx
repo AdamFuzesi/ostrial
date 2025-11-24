@@ -64,7 +64,7 @@ export const SpinningAsciiCube = ({ color = "white" }: SpinningAsciiCubeProps) =
     const y = calculateY(cubeX, cubeY, cubeZ, A, B, C)
     const z = calculateZ(cubeX, cubeY, cubeZ, A, B, C) + camDistance
 
-    if (z <= 0) return // dont need this offset
+    if (z <= 0) return
 
     const ooz = 1 / z
     const aspectRatio = height / width
