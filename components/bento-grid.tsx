@@ -124,7 +124,9 @@ export const BentoGrid = memo(function BentoGrid() {
 
             {/* Education - Tall diagonal animated card on the right */}
             <motion.div className="lg:row-span-3 h-[700px]" variants={itemVariants}>
-              <DiagonalAnimatedCard title="Education" description="Academic background and certifications" className="h-full" />
+              <Link href="/education" className="block h-full">
+                <DiagonalAnimatedCard title="Education" description="Academic background and certifications" className="h-full" />
+              </Link>
             </motion.div>
 
             {/* Hackathons */}
