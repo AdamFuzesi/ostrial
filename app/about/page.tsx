@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { ArrowLeft, Sun, Moon } from "lucide-react"
+import { ArrowLeft, Sun, Moon, Copy } from "lucide-react"
 
 const introdata = {
   title: "Hey, I'm Adam",
@@ -53,9 +53,16 @@ const worktimeline = [
 
 export default function AboutPage() {
   const [isDark, setIsDark] = useState(false)
+  const [copied, setCopied] = useState(false)
 
   const toggleTheme = () => {
     setIsDark(!isDark)
+  }
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText("adam.fuzesi@dal.ca")
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
   }
 
   return (
@@ -181,106 +188,85 @@ export default function AboutPage() {
       </motion.div>
       </div>
 
-      {/* Scrollable Content Section */}
-      <div className={`relative z-20 ${isDark ? 'bg-gradient-to-b from-black/50 to-black' : 'bg-gradient-to-b from-white to-gray-50'} transition-colors duration-500`}>
-        <div className="max-w-6xl mx-auto px-8 py-20">
-          {/* Introduction Section */}
+      <div className={`relative z-20 transition-colors duration-500 ${isDark ? "bg-black" : "bg-white"}`}>
+        <div className="max-w-6xl mx-auto px-8 md:px-16 py-24 md:py-32">
+          {/* Name and Introduction Section */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="mb-32"
+            className="mb-16"
           >
-            <h2 
-              className={`text-6xl md:text-7xl font-light mb-6 transition-colors duration-500 ${
-                isDark ? 'text-white' : 'text-[#8b5cf6]'
+            {/* Large Name Heading - Full Width */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className={`text-7xl md:text-8xl lg:text-9xl font-black mb-16 leading-[0.9] tracking-tighter transition-colors duration-500 ${
+                isDark ? "text-white" : "text-black"
               }`}
             >
-              {introdata.title}
-            </h2>
-            <div className="grid md:grid-cols-2 gap-12 mt-12">
-              <div className="space-y-4">
-                {Object.values(introdata.animated).map((text, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className={`p-4 rounded-2xl backdrop-blur-sm transition-colors duration-500 ${
-                      isDark 
-                        ? 'bg-white/5 border border-white/10' 
-                        : 'bg-[#8b5cf6]/5 border border-[#8b5cf6]/10'
+              GET TO
+              <br />
+              KNOW ME
+            </motion.h1>
+
+            <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-start">
+              {/* Left Column - Email */}
+              <div>
+                {/* Email with Copy Button */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <button
+                    onClick={copyEmail}
+                    className={`flex items-center gap-2 group transition-colors duration-300 ${
+                      isDark ? "text-white/70 hover:text-white" : "text-gray-600 hover:text-black"
                     }`}
                   >
-                    <p 
-                      className={`text-lg font-light transition-colors duration-500 ${
-                        isDark ? 'text-white/90' : 'text-[#8b5cf6]/90'
-                      }`}
+                    <span className="text-base md:text-lg font-light">adam.fuzesi@dal.ca</span>
+                    <Copy className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </button>
+                  {copied && (
+                    <motion.span
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0 }}
+                      className={`text-sm font-light mt-2 block ${isDark ? "text-white/50" : "text-gray-500"}`}
                     >
-                      {text}
-                    </p>
-                  </motion.div>
-                ))}
+                      Copied!
+                    </motion.span>
+                  )}
+                </motion.div>
               </div>
+
+              {/* Right Column - Introduction Paragraph */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="flex items-center justify-center"
               >
-                <div 
-                  className={`w-full max-w-md aspect-square rounded-3xl overflow-hidden transition-all duration-500 ${
-                    isDark 
-                      ? 'shadow-2xl shadow-white/10' 
-                      : 'shadow-2xl shadow-[#8b5cf6]/20'
+                <p
+                  className={`text-lg md:text-xl leading-relaxed font-light transition-colors duration-500 ${
+                    isDark ? "text-white/80" : "text-gray-700"
                   }`}
                 >
-                  <img
-                    src={introdata.intro_img_url}
-                    alt="Profile"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+                  Hello, I'm a student specializing in software engineering with experience in cloud computing and
+                  full-stack development — based in Halifax, working on innovative projects. Let's build something
+                  great!
+                </p>
               </motion.div>
             </div>
+
           </motion.div>
 
-          {/* About Me Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="mb-32"
-          >
-            <h2 
-              className={`text-6xl md:text-7xl font-light mb-8 transition-colors duration-500 ${
-                isDark ? 'text-white' : 'text-[#8b5cf6]'
-              }`}
-            >
-              {dataabout.title}
-            </h2>
-            <div 
-              className={`p-8 md:p-12 rounded-3xl backdrop-blur-sm transition-colors duration-500 ${
-                isDark 
-                  ? 'bg-white/5 border border-white/10' 
-                  : 'bg-[#8b5cf6]/5 border border-[#8b5cf6]/10'
-              }`}
-            >
-              <p 
-                className={`text-lg md:text-xl leading-relaxed font-light transition-colors duration-500 ${
-                  isDark ? 'text-white/90' : 'text-gray-800'
-                }`}
-              >
-                {dataabout.aboutme}
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Work Timeline Section */}
+          {/* About Section */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -288,56 +274,129 @@ export default function AboutPage() {
             viewport={{ once: true, margin: "-100px" }}
             className="mb-20"
           >
-            <h2 
-              className={`text-6xl md:text-7xl font-light mb-12 transition-colors duration-500 ${
-                isDark ? 'text-white' : 'text-[#8b5cf6]'
-              }`}
-            >
-              Experience
-            </h2>
-            <div className="space-y-6">
-              {worktimeline.map((work, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className={`group p-6 md:p-8 rounded-2xl backdrop-blur-sm transition-all duration-300 hover:scale-[1.02] ${
-                    isDark 
-                      ? 'bg-white/5 border border-white/10 hover:bg-white/10' 
-                      : 'bg-[#8b5cf6]/5 border border-[#8b5cf6]/10 hover:bg-[#8b5cf6]/10'
+            <div className="grid lg:grid-cols-12 gap-8 lg:gap-16">
+              {/* Section Label */}
+              <div className="lg:col-span-3">
+                <h2
+                  className={`text-3xl md:text-4xl font-light transition-colors duration-500 ${
+                    isDark ? "text-white" : "text-black"
                   }`}
                 >
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                    <div className="flex-1">
-                      <h3 
-                        className={`text-2xl md:text-3xl font-light mb-2 transition-colors duration-500 ${
-                          isDark ? 'text-white' : 'text-[#8b5cf6]'
-                        }`}
-                      >
-                        {work.jobtitle}
-                      </h3>
-                      <p 
-                        className={`text-lg font-light transition-colors duration-500 ${
-                          isDark ? 'text-white/70' : 'text-gray-600'
-                        }`}
-                      >
-                        {work.where}
-                      </p>
+                  about.
+                </h2>
+              </div>
+
+              {/* Content */}
+              <div className="lg:col-span-9">
+                <p
+                  className={`text-base md:text-lg leading-relaxed font-light transition-colors duration-500 ${
+                    isDark ? "text-white/70" : "text-gray-600"
+                  }`}
+                >
+                  {dataabout.aboutme}
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Experience Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="mb-20"
+          >
+            <div className="grid lg:grid-cols-12 gap-8 lg:gap-16">
+              {/* Section Label */}
+              <div className="lg:col-span-3">
+                <h2
+                  className={`text-3xl md:text-4xl font-light transition-colors duration-500 ${
+                    isDark ? "text-white" : "text-black"
+                  }`}
+                >
+                  experience.
+                </h2>
+              </div>
+
+              {/* Timeline Items */}
+              <div className="lg:col-span-9 space-y-12">
+                {worktimeline.map((work, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <div className="space-y-4">
+                      {/* Position */}
+                      <div>
+                        <span
+                          className={`text-xs uppercase tracking-wider font-light mb-2 block transition-colors duration-500 ${
+                            isDark ? "text-white/40" : "text-gray-400"
+                          }`}
+                        >
+                          POSITION
+                        </span>
+                        <h3
+                          className={`text-2xl md:text-3xl font-light transition-colors duration-500 ${
+                            isDark ? "text-white" : "text-black"
+                          }`}
+                        >
+                          {work.jobtitle}
+                        </h3>
+                      </div>
+
+                      {/* Company and Date Grid */}
+                      <div className="grid md:grid-cols-2 gap-6 pt-2">
+                        <div>
+                          <span
+                            className={`text-xs uppercase tracking-wider font-light mb-2 block transition-colors duration-500 ${
+                              isDark ? "text-white/40" : "text-gray-400"
+                            }`}
+                          >
+                            COMPANY
+                          </span>
+                          <p
+                            className={`text-lg font-light transition-colors duration-500 ${
+                              isDark ? "text-white/80" : "text-gray-700"
+                            }`}
+                          >
+                            {work.where}
+                          </p>
+                        </div>
+
+                        <div>
+                          <span
+                            className={`text-xs uppercase tracking-wider font-light mb-2 block transition-colors duration-500 ${
+                              isDark ? "text-white/40" : "text-gray-400"
+                            }`}
+                          >
+                            DURATION
+                          </span>
+                          <p
+                            className={`text-lg font-light transition-colors duration-500 ${
+                              isDark ? "text-white/80" : "text-gray-700"
+                            }`}
+                          >
+                            {work.date}
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                    <div 
-                      className={`px-4 py-2 rounded-full text-sm font-light transition-colors duration-500 ${
-                        isDark 
-                          ? 'bg-white/10 text-white/80' 
-                          : 'bg-[#8b5cf6]/10 text-[#8b5cf6]'
-                      }`}
-                    >
-                      {work.date}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+
+                    {/* Divider Line */}
+                    {index < worktimeline.length - 1 && (
+                      <div
+                        className={`mt-12 h-px transition-colors duration-500 ${
+                          isDark ? "bg-white/10" : "bg-gray-200"
+                        }`}
+                      />
+                    )}
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </motion.div>
         </div>
