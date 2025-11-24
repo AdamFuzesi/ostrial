@@ -245,7 +245,7 @@ export default function AboutPage() {
                 </motion.div>
               </div>
 
-              {/* Right Column - Introduction Paragraph */}
+              {/* Right Column - Introduction */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
