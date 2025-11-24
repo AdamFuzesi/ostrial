@@ -216,7 +216,6 @@ export default function AboutPage() {
             <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-start">
               {/* Left Column */}
               <div>
-                {/* Email with Copy Button */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}

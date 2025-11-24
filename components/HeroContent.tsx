@@ -11,8 +11,6 @@ export default function HeroContent() {
           <span className="font-light tracking-tight text-white">Design, Build, Ship, Repeat</span>
         </h2>
 
-        {/* Description */}
-
         {/* Buttons */}
         <div className="flex items-center gap-4 flex-wrap">
           <a
