@@ -109,8 +109,10 @@ export default function HorizontalScroller() {
     animationFrameId.current = requestAnimationFrame(animate)
 
     return () => {
+      
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current)
+
       }
     }
   }, [])

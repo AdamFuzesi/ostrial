@@ -188,7 +188,7 @@ export default function AboutPage() {
       </motion.div>
       </div>
 
-      <div className={`relative z-20 transition-colors duration-500 ${isDark ? "bg-black" : "bg-white"}`}>
+      <div className={`relative z-20 transition-colors duration-500 ${isDark ? "bg-[#b2b2b2]" : "bg-white"}`}>
         <div className="max-w-6xl mx-auto px-8 md:px-16 py-24 md:py-32">
           {/* Name and Introduction Section */}
           <motion.div

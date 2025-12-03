@@ -126,12 +126,195 @@ export default function EducationPage() {
         </motion.div>
       </div>
 
-      {/* Content sections will go here */}
-      <div className={`relative z-20 transition-colors duration-500 ${isDark ? "bg-black" : "bg-white"}`}>
+      {/* Education Content Section */}
+      <div className={`relative z-20 transition-colors duration-500 ${isDark ? "bg-[#b2b2b2]" : "bg-white"}`}>
         <div className="max-w-6xl mx-auto px-8 md:px-16 py-24 md:py-32">
-          <p className={`text-lg ${isDark ? "text-white" : "text-black"}`}>
-            Education content coming soon...
-          </p>
+          
+          {/* Korea University */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="mb-32"
+          >
+            <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+              {/* Logo */}
+              <div className="lg:col-span-4">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="w-full max-w-sm mx-auto"
+                  style={{
+                    filter: "drop-shadow(0 15px 35px rgba(0, 0, 0, 0.3)) drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2))",
+                  }}
+                >
+                  <img
+                    src="/gifs/kuLogo.png"
+                    alt="Korea University Logo"
+                    className="w-full h-auto object-contain"
+                  />
+                </motion.div>
+              </div>
+
+              {/* Content */}
+              <div className="lg:col-span-8">
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  <h2
+                    className={`text-8xl md:text-7xl font-light mb-4 transition-colors duration-500 ${
+                      isDark ? "text-white" : "text-black"
+                    }`}
+                  >
+                    Korea University
+                  </h2>
+
+                  {/* Divider under university name */}
+                  <div
+                    className={`w-full max-w-lg h-1 mb-6 transition-colors duration-500 ${
+                      isDark ? "bg-white" : "bg-[#8b5cf6]"
+                    }`}
+                  />
+
+                  <div className="mb-6">
+                    <span
+                      className={`text-sm uppercase tracking-wider font-light transition-colors duration-500 ${
+                        isDark ? "text-white/40" : "text-gray-400"
+                      }`}
+                    >
+                      DURATION
+                    </span>
+                    <p
+                      className={`text-lg font-light mt-2 transition-colors duration-500 ${
+                        isDark ? "text-white/80" : "text-gray-700"
+                      }`}
+                    >
+                      September 2025 - January 2026
+                    </p>
+                  </div>
+
+                  <p
+                    className={`text-base md:text-lg leading-relaxed font-light transition-colors duration-500 ${
+                      isDark ? "text-white/70" : "text-gray-600"
+                    }`}
+                  >
+                    Semester abroad at one of Asia's Ivy League schools. A part of their Artificial Intelligence 
+                    certificate program and software engineering degree.
+                  </p>
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Divider */}
+          <div
+            className={`mb-32 h-px transition-colors duration-500 ${
+              isDark ? "bg-white/10" : "bg-gray-200"
+            }`}
+          />
+
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="mb-20"
+          >
+            <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+              {/* Logo */}
+              <div className="lg:col-span-4">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="w-full max-w-sm mx-auto"
+                  style={{
+                    filter: "drop-shadow(0 15px 35px rgba(0, 0, 0, 0.3)) drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2))",
+                  }}
+                >
+                  <img
+                    src="/gifs/dalhousieLogo.png"
+                    alt="Dalhousie University Logo"
+                    className="w-full h-auto object-contain"
+                  />
+                </motion.div>
+              </div>
+
+              {/* Content */}
+              <div className="lg:col-span-8">
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  <h2
+                    className={`text-8xl md:text-6xl font-light mb-4 transition-colors duration-500 ${
+                      isDark ? "text-white" : "text-black"
+                    }`}
+                  >
+                    Dalhousie University
+                  </h2>
+
+                  {/* Divider under university name */}
+                  <div
+                    className={`w-full max-w-lg h-1 mb-6 transition-colors duration-500 ${
+                      isDark ? "bg-white" : "bg-[#8b5cf6]"
+                    }`}
+                  />
+
+                  <div className="mb-6">
+                    <span
+                      className={`text-sm uppercase tracking-wider font-light transition-colors duration-500 ${
+                        isDark ? "text-white/40" : "text-gray-400"
+                      }`}
+                    >
+                      DURATION
+                    </span>
+                    <p
+                      className={`text-lg font-light mt-2 transition-colors duration-500 ${
+                        isDark ? "text-white/80" : "text-gray-700"
+                      }`}
+                    >
+                      September 2022 - December 2026
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    <p
+                      className={`text-base md:text-lg leading-relaxed font-light transition-colors duration-500 ${
+                        isDark ? "text-white/70" : "text-gray-600"
+                      }`}
+                    >
+                      Computer Science student minoring in Mathematics.
+                    </p>
+                    <p
+                      className={`text-base md:text-lg leading-relaxed font-light transition-colors duration-500 ${
+                        isDark ? "text-white/70" : "text-gray-600"
+                      }`}
+                    >
+                      Computer science faculty representative of 2024 - 2025. Part of the ICPC programming team.
+                    </p>
+                    <p
+                      className={`text-base md:text-lg leading-relaxed font-light transition-colors duration-500 ${
+                        isDark ? "text-white/70" : "text-gray-600"
+                      }`}
+                    >
+                      Lead Developer for the blockchain/hackathon society.
+                    </p>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
+
         </div>
       </div>
     </div>
