@@ -50,6 +50,7 @@ export const SpinningAsciiCube = ({ color = "white" }: SpinningAsciiCubeProps) =
   }
 
   const calculateForSurface = (
+    
     cubeX: number,
     cubeY: number,
     cubeZ: number,
