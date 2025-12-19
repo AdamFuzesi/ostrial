@@ -1,5 +1,7 @@
 "use client"
 
+// make sure header appears for the specified input pages too... not just the main laid out bento page
+
 export default function Header() {
   return (
     <header className="absolute top-0 right-0 z-20 p-8">
