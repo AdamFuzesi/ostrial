@@ -59,6 +59,7 @@ export const SpinningAsciiCube = ({ color = "white" }: SpinningAsciiCubeProps) =
     ch: string,
     buffer: string[],
     zBuffer: number[],
+    
     A: number,
     B: number,
     C: number,
