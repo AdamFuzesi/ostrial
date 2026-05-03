@@ -42,6 +42,7 @@ export const SpinningAsciiCube = ({ color = "white" }: SpinningAsciiCubeProps) =
       j * Math.sin(A) * Math.sin(B) * Math.sin(C) +
       k * Math.cos(A) * Math.sin(B) * Math.sin(C) -
       i * Math.cos(B) * Math.sin(C)
+      
     )
   }
 
@@ -66,7 +67,7 @@ export const SpinningAsciiCube = ({ color = "white" }: SpinningAsciiCubeProps) =
     B: number,
     C: number,
 
-    
+
     
   ) => {
     const x = calculateX(cubeX, cubeY, cubeZ, A, B, C)
