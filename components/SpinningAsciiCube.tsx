@@ -65,6 +65,8 @@ export const SpinningAsciiCube = ({ color = "white" }: SpinningAsciiCubeProps) =
     A: number,
     B: number,
     C: number,
+
+    
     
   ) => {
     const x = calculateX(cubeX, cubeY, cubeZ, A, B, C)
